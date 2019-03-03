@@ -5,21 +5,38 @@ using UnityEngine;
 public class carsInstantate : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject car;
+    public GameObject[] autos;
     public float instanceRate = 15f;
     private float nextInstance = 0.0f;
+    public float minTimeBetweenStones = 1f, maxTimeBetweenStones = 3f;
     void Start()
     {
-        
+        StartCoroutine(ThrowStones());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time> nextInstance)
+        
+    }
+    IEnumerator ThrowStones()
+    {
+        // Initial delay
+        yield return new WaitForSeconds(2.0f);
+
+        while (true)
         {
-            nextInstance = Time.time + instanceRate;
-            Instantiate(car,transform.position,transform.rotation);
+
+
+            GameObject auto = (GameObject)Instantiate(autos[Random.Range(0, autos.Length)]);
+            //stone.transform.position = new Vector3(Random.Range(minX, maxX), -30.0f, Random.Range(minZ, maxZ));
+            //stone.transform.rotation = Random.rotation;
+
+            //nextInstance = Time.time + instanceRate;
+            Instantiate(auto,transform.position,transform.rotation);
+            yield return new WaitForSeconds(Random.Range(minTimeBetweenStones, maxTimeBetweenStones));
+
         }
+
     }
 }

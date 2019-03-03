@@ -33,11 +33,11 @@ public class movimientoCarro : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.name == "Girar1")
+        if (collision.gameObject.name == "Cruce_25_1")
         {            
                 transform.Rotate(new Vector3(0f, 90f, 0f));
         }        
-        if (collision.gameObject.name == "Girar")
+        if (collision.gameObject.name == "Cruce_25")
         {
             int opcionMovimiento = 0;
             opcionMovimiento = Random.Range(0, 3);
