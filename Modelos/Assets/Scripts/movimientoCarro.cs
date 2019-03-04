@@ -88,9 +88,10 @@ public class movimientoCarro : MonoBehaviour
         Transform transformEsconderPare = esconderPare.GetComponent<Transform>();
         Transform transformVelocidadCero = velocidadCero.GetComponent<Transform>();
         if (collision.gameObject.name == "Cruce_25_1")
-        {            
+        {
+            Debug.Log(this.name + " colisionó con " + collision.gameObject.name);
            transform.Rotate(new Vector3(0f, 90f, 0f));
-        }        
+        }
         if (collision.gameObject.name == "Cruce_25")
         {
             opcionMovimiento = Random.Range(0, 3);
@@ -121,7 +122,7 @@ public class movimientoCarro : MonoBehaviour
         Transform transformVelocidadCero = velocidadCero.GetComponent<Transform>();
         if (collision.gameObject.name == "Cruce_25_3")
         {
-            Debug.Log("Colision de auto con " + collision.gameObject.name);
+            //Debug.Log("Colision de auto con " + collision.gameObject.name);
             transformEsconderPare.position = new Vector3(esconderPare.transform.position.x, 0.035f, esconderPare.transform.position.z);
             transformVelocidadCero.position = new Vector3(velocidadCero.transform.position.x, 0.035f, velocidadCero.transform.position.z);
         } else if (collision.gameObject.name == "Cruce_25_2")
