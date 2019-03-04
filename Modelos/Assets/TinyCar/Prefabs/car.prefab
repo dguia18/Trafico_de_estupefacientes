@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  objetivo: {fileID: 0}
 --- !u!65 &5644364375234507283
 BoxCollider:
   m_ObjectHideFlags: 0
