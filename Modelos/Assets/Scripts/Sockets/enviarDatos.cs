@@ -22,12 +22,14 @@ public class enviarDatos : MonoBehaviour
         if (collision.gameObject.name == "emisor25_1") {
             //Debug.Log("Entro a colisionar con el cube");
             PlayerControl.client.Send("Moving|"+ gameObject.name + "|" + collision.gameObject.name);
+            Destroy(gameObject);
         }
         if (collision.gameObject.name == "emisor25_2")
         {
             //Debug.Log("Entro a colisionar con el cube");
             PlayerControl.client.Send("Moving|" + gameObject.name + "|" + collision.gameObject.name);
+            Destroy(gameObject);
         }
-
+     
     }
 }
