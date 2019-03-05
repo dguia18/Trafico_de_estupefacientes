@@ -11,7 +11,7 @@ public class carsInstantate : MonoBehaviour
     public float minTimeBetweenStones = 1f, maxTimeBetweenStones = 3f;
     void Start()
     {
-        StartCoroutine(ThrowStones());
+        StartCoroutine(ThrowCars());
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class carsInstantate : MonoBehaviour
     {
         
     }
-    IEnumerator ThrowStones()
+    IEnumerator ThrowCars()
     {
         // Initial delay
         yield return new WaitForSeconds(3.0f);
