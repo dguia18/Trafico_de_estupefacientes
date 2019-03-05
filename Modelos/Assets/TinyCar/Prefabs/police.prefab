@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4000014098046542}
   - component: {fileID: 33000013147988010}
   - component: {fileID: 23000012767651460}
+  - component: {fileID: 6544271344344794640}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &6544271344344794640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010413107662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ba979648bf5aa4e8f9c80ab428e59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000010847750230
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +103,7 @@ GameObject:
   - component: {fileID: 8179936442676922458}
   - component: {fileID: 5386132478420255824}
   - component: {fileID: 1313124829546732420}
+  - component: {fileID: 805858075720907892}
   m_Layer: 0
   m_Name: police
   m_TagString: Untagged
@@ -154,6 +168,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &805858075720907892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010847750230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ba979648bf5aa4e8f9c80ab428e59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000011163423182
 GameObject:
   m_ObjectHideFlags: 0
