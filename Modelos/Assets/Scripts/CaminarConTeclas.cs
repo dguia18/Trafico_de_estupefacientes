@@ -6,7 +6,7 @@ public class CaminarConTeclas : MonoBehaviour
 {
     // Start is called before the first frame update
     public float deltaRotation=30f;
-    public float deltaMovement = 200f;
+    public float deltaMovement = 10f;
 
 
     void Start()
