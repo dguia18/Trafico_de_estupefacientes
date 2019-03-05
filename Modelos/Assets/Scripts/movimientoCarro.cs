@@ -5,8 +5,9 @@ using UnityEngine;
 public class movimientoCarro : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed;
-    int opcionMovimiento;
+    public float velocidadInicial = 5f;
+    public float velocidad;
+    int desvio;
     bool acelerando;
     bool cruzando;
     int ruta;
@@ -15,13 +16,11 @@ public class movimientoCarro : MonoBehaviour
     //float alturaPare;
     void Start()
     {
+        velocidad = velocidadInicial;
         ruta = 0;
-        opcionMovimiento = 0;
-        //detenerCruce_25_2 = 0;
+        desvio = 0;
         acelerando = false;
         cruzando = false;
-        //opcionMovimiento = 0;
-        //alturaPare = 0f;
     }
     void Update()
     {
@@ -41,22 +40,20 @@ public class movimientoCarro : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (acelerando)
-        {
-            if (speed < 1f)
-            {
-                speed = 1f;
-            }
-            speed *= 1.05f;
-            if (speed >= 5f)
-            {
-                speed = 10f;
-                acelerando = false;
-            }
-        }
+        //if (acelerando)
+        //{
+        //    print("ACELERANDO VELOCIDAD: " + velocidad);
+        //    if (velocidad < 1f) velocidad = 1f;
+        //    velocidad *= 1.5f;
+        //    if (velocidad >= velocidadInicial)
+        //    {
+        //        velocidad = velocidadInicial;
+        //        acelerando = false;
+        //    }
+        //}
 
-        transform.Translate(0, 0, speed * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation, speed * Time.deltaTime);
+        transform.Translate(0, 0, velocidad * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation, velocidad * Time.deltaTime);
 
         //Debug.Log("Detener cruce " + detenerCruce_25_2);
         //if (this.transform.position.x <= 194.5f && this.transform.position.x >= 192f)
@@ -76,39 +73,46 @@ public class movimientoCarro : MonoBehaviour
         if (myParent != null)
         {
             string collisioner = collision.gameObject.name;
-            if (collisioner.Substring(0, 6).Equals("girar_"))
+            GameObject objParent = myParent.gameObject;
+            if (collisioner.Substring(0, 6).Equals("espera"))
             {
-                int giro = int.Parse(collisioner.Substring(6, 1));
-                print("GIRO : " + giro);
-                print("RUTA : " + ruta);
-                if (giro == 1)
+                velocidad = velocidadInicial;
+            } else if (collisioner.Substring(0, 3).Equals("fin"))
+            {
+                // Reiniciamos la velocidad, aceleración y ruta del auto
+                velocidad = velocidadInicial;
+                acelerando = false;
+                ruta = 0;
+                int finRuta = int.Parse(collisioner.Substring(9, 1));
+                switch (finRuta)
                 {
-                    if (ruta == 3 && !cruzando)
-                    {
-                        transform.Rotate(new Vector3(0f, 90f, 0f));
-                        cruzando = true;
-                    }
-                } else if (giro == 2)
-                {
-                    if (ruta == 4 && !cruzando)
-                    {
-                        transform.Rotate(new Vector3(0f, 90f, 0f));
-                        cruzando = true;
-                    }
-                } else if (giro == 3)
-                {
-                    if (ruta == 5 && !cruzando)
-                    {
-                        transform.Rotate(new Vector3(0f, -90f, 0f));
-                        cruzando = true;
-                    }
-                } else if (giro == 4)
-                {
-                    if (ruta == 6 && !cruzando)
-                    {
-                        transform.Rotate(new Vector3(0f, -90f, 0f));
-                        cruzando = true;
-                    }
+                    case 1:
+                        objParent.GetComponent<controlCruces>().Ruta1 = false;
+                        break;
+                    case 2:
+                        objParent.GetComponent<controlCruces>().Ruta2 = false;
+                        break;
+                    case 3:
+                        objParent.GetComponent<controlCruces>().Ruta3 = false;
+                        break;
+                    case 4:
+                        objParent.GetComponent<controlCruces>().Ruta4 = false;
+                        break;
+                    case 5:
+                        objParent.GetComponent<controlCruces>().Ruta5 = false;
+                        break;
+                    case 6:
+                        objParent.GetComponent<controlCruces>().Ruta6 = false;
+                        break;
+                    case 7:
+                        objParent.GetComponent<controlCruces>().Ruta7 = false;
+                        break;
+                    case 8:
+                        objParent.GetComponent<controlCruces>().Ruta8 = false;
+                        break;
+                    default:
+                        Debug.Log("No se puede liberar, ruta desconocida.");
+                        break;
                 }
             }
             //GameObject parent = myParent.gameObject;
@@ -176,32 +180,76 @@ public class movimientoCarro : MonoBehaviour
         if (myParent != null)
         {
             string collisioner = collision.gameObject.name;
-            GameObject parent = myParent.gameObject;
+            GameObject objParent = myParent.gameObject;
+            // Si no se le ha asignado una ruta al auto, es decir, apenas está entrando a las rutas.
             if (ruta == 0)
             {
+                //Debug.Log("El auto no tiene ruta asignada");
                 if (collisioner.Substring(0, 5).Equals("ruta_"))
                 {
+                    // Qué hacemos cuando colisiona con una ruta...
                     ruta = int.Parse(collisioner.Substring(5, 1));
-                    //print("Entrando : RUTA : " + ruta);
                     cruzando = false;
-                    opcionMovimiento = Random.Range(0, 3);
-                    //print(ruta);
-                    if (ruta == 1)
+                    desvio = Random.Range(0, 3);
+                    //Debug.Log("Al auto se le asignará la ruta " + ruta);
+                    switch (ruta)
                     {
-                        if (opcionMovimiento == 2) ruta = 3;
-                    } else if (ruta == 2)
-                    {
-                        if (opcionMovimiento == 2) ruta = 5;
-                    } else if (ruta == 4)
-                    {
-                        if (collisioner == "ruta_4_") opcionMovimiento = 0;
-                        if (opcionMovimiento == 2) ruta = 7;
-                    } else if (ruta == 6)
-                    {
-                        if (opcionMovimiento == 2) ruta = 8;
+                        case 1:
+                            if (desvio == 2) ruta = 3;
+                            break;
+                        case 2:
+                            if (desvio == 2) ruta = 5;
+                            break;
+                        case 4:
+                            if (desvio == 2) ruta = 7;
+                            break;
+                        case 6:
+                            if (desvio == 2) ruta = 8;
+                            break;
+                        default:
+                            break;
                     }
                 }
+            } else if (collisioner.Substring(0, 5).Equals("girar"))
+            {
+                velocidad = 1.5f * velocidadInicial;
+                int giro = int.Parse(collisioner.Substring(6, 1));
+                //Debug.Log("Girando " + transform.name + " de la RUTA: " + ruta + " con el GIRO: " + giro);
+                if (giro == 1)
+                {
+                    if (ruta == 3 && !cruzando)
+                    {
+                        Cruzar(0f, 90f, 0f);
+                    }
+                }
+                else if (giro == 2 && (ruta == 4 || ruta == 7))
+                {
+                    if (ruta == 4 && !cruzando)
+                    {
+                        Cruzar(0f, 90f, 0f);
+                    }
+                }
+                else if (giro == 3)
+                {
+                    if (ruta == 5 && !cruzando)
+                    {
+                        Cruzar(0f, -90f, 0f);
+                    }
+                }
+                else if (giro == 4)
+                {
+                    if (ruta == 6 && !cruzando)
+                    {
+                        Cruzar(0f, -90f, 0f);
+                    }
+                }
+                else if (giro == 5 && (ruta == 4 || ruta == 7))
+                {
+                    // Caso especial, giro obligatorio en caso de 3 cruces.
+                    Cruzar(0f, 90f, 0f);
+                }
             }
+            //Debug.Log("El auto tiene asignada la ruta " + ruta);
         }
     }
 
@@ -210,72 +258,92 @@ public class movimientoCarro : MonoBehaviour
         Transform myParent = collision.gameObject.transform.parent;
         if (myParent != null)
         {
-
-            GameObject parent = myParent.gameObject;
+            GameObject objParent = myParent.gameObject;
             string collisioner = collision.gameObject.name;
-                //GameObject esconderPare = myPare.gameObject;
-                //GameObject velocidadCero = myVelocidadCero.gameObject;
-                //Transform transformEsconderPare = esconderPare.GetComponent<Transform>();
-                //Transform transformVelocidadCero = velocidadCero.GetComponent<Transform>();
             if (collisioner == "ruta_1")
             {
-                print("Ruta1 del padre: " + parent.GetComponent<controlCruces>().Ruta1);
-                if (opcionMovimiento == 2)
+                if (ruta == 3)
                 {
-                    parent.GetComponent<controlCruces>().Ruta3 = 1;
-                } else
+                    objParent.GetComponent<controlCruces>().Ruta3 = true;
+                } else if (ruta == 1)
                 {
-                    parent.GetComponent<controlCruces>().Ruta1 = 1;
+                    objParent.GetComponent<controlCruces>().Ruta1 = true;
                 }
-                //Debug.Log("Ruta 1: " + parent.GetComponent<controlCruces>().Ruta1);
-                //Debug.Log("Ruta 2: " + parent.GetComponent<controlCruces>().Ruta2);
-                //Debug.Log("Ruta 3: " + parent.GetComponent<controlCruces>().Ruta3);
-                //Debug.Log("Ruta 4: " + parent.GetComponent<controlCruces>().Ruta4);
                 //GameObject esconderPare = parent.transform.Find("Cruce_25_2").gameObject;
                 //Debug.Log("Colision de auto con " + collisioner);
                 //transformEsconderPare.position = new Vector3(esconderPare.transform.position.x, 0.035f, esconderPare.transform.position.z);
                 //transformVelocidadCero.position = new Vector3(velocidadCero.transform.position.x, 0.035f, velocidadCero.transform.position.z);
             } else if (collisioner == "ruta_2")
             {
-                parent.GetComponent<controlCruces>().Ruta2 = 1;
-            } else if (collisioner == "ruta_2")
-            {
-                parent.GetComponent<controlCruces>().Ruta3 = 1;
-            }
-            else if (collisioner == "Cruce_25_2")
-            {
-                speed = speed / 1.015f;
-                transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation, speed * Time.deltaTime);
-                acelerando = false;
-            }
-            else if (collisioner == "espera_4_1")
-            {
-                if (parent.GetComponent<controlCruces>().Ruta1 == 1)
+                if (ruta == 2)
                 {
-                    GameObject espera42 = parent.transform.Find("espera_4_2").gameObject;
-                    Transform transform_espera42 = espera42.GetComponent<Transform>();
-                    speed = (speed) / (1.5f);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation, speed * Time.deltaTime);
+                    objParent.GetComponent<controlCruces>().Ruta2 = true;
+                } else if(ruta == 5)
+                {
+                    objParent.GetComponent<controlCruces>().Ruta5 = true;
+                }
+            } else if (collisioner == "ruta_4")
+            {
+                print("Colisionando con ruta_4");
+                if (ruta == 4)
+                {
+                    objParent.GetComponent<controlCruces>().Ruta4 = true;
+                } else if (ruta == 7)
+                {
+                    objParent.GetComponent<controlCruces>().Ruta7 = true;
+                }
+            } else if (collisioner == "ruta_6")
+            {
+                if (ruta == 6)
+                {
+                    objParent.GetComponent<controlCruces>().Ruta6 = true;
+                }
+            }
+            if (collisioner == "ruta_4")
+            {
+                print(transform.name + "Colisionado con " + collisioner);
+                GameObject espera41 = objParent.transform.Find("espera_4_1").gameObject;
+                Transform transform_espera41 = espera41.GetComponent<Transform>();
+                GameObject espera42 = objParent.transform.Find("espera_4_2").gameObject;
+                Transform transform_espera42 = espera42.GetComponent<Transform>();
+                GameObject espera43 = objParent.transform.Find("espera_4_3").gameObject;
+                Transform transform_espera43 = espera43.GetComponent<Transform>();
+                if (objParent.GetComponent<controlCruces>().Ruta1)
+                {
+                    Debug.Log("Ruta 1 OCUPADA : " + objParent.GetComponent<controlCruces>().Ruta1);
+                    transform_espera41.localPosition = new Vector3(espera41.transform.localPosition.x, espera41.transform.localPosition.y, -0.44f);
+                    transform_espera42.localPosition = new Vector3(espera42.transform.localPosition.x, espera42.transform.localPosition.y, -0.44f);
+                    transform_espera43.localPosition = new Vector3(espera43.transform.localPosition.x, espera43.transform.localPosition.y, -0.44f);
+                    velocidad = 0.0003f;
                     acelerando = false;
-                    transform_espera42.position = new Vector3(espera42.transform.position.x, 0.04f, espera42.transform.position.z);
                 } else
                 {
-                    GameObject espera42 = parent.transform.Find("espera_4_2").gameObject;
-                    Transform transform_espera42 = espera42.GetComponent<Transform>();
-                    transform_espera42.position = new Vector3(espera42.transform.position.x, 0f, espera42.transform.position.z);
-                    GameObject espera43 = parent.transform.Find("espera_4_3").gameObject;
-                    Transform transform_espera43 = espera43.GetComponent<Transform>();
-                    transform_espera43.position = new Vector3(espera43.transform.position.x, 0f, espera43.transform.position.z);
+                    Debug.Log("Ruta 1 DESOCUPADA : " + objParent.GetComponent<controlCruces>().Ruta1);
+                    transform_espera41.localPosition = new Vector3(espera41.transform.localPosition.x, espera41.transform.localPosition.y, -1f);
+                    transform_espera42.localPosition = new Vector3(espera42.transform.localPosition.x, espera42.transform.localPosition.y, -1f);
+                    transform_espera43.localPosition = new Vector3(espera43.transform.localPosition.x, espera43.transform.localPosition.y, -1f);
+                    velocidad = velocidadInicial;
+                    acelerando = true;
                 }
-            } else if (collisioner == "espera_4_2")
-            {
-                GameObject espera43 = parent.transform.Find("espera_4_3").gameObject;
-                Transform transform_espera43 = espera43.GetComponent<Transform>();
-                speed = (speed) / (1.5f);
-                transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation, speed * Time.deltaTime);
-                acelerando = false;
-                transform_espera43.position = new Vector3(espera43.transform.position.x, 0.04f, espera43.transform.position.z);
             }
+            else if (collisioner.Substring(0, 6).Equals("espera"))
+            {
+                int aceleracion = int.Parse(collisioner.Substring(9, 1));
+                GameObject espera4 = objParent.transform.Find(collisioner).gameObject;
+                Transform transform_espera42 = espera4.GetComponent<Transform>();
+                velocidad = velocidadInicial * aceleracion * aceleracion / 10;
+            }
+        }
+    }
+
+    private void Cruzar(float x, float y, float z)
+    {
+        if (!cruzando)
+        {
+            transform.Rotate(new Vector3(x, y, z));
+            cruzando = true;
+            //Debug.Log("Está cruzando: " + cruzando);
+            //Debug.Log("Cruzando " + transform.name + " con la ruta " + ruta);
         }
     }
 }
