@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 3870577006741157902}
   - component: {fileID: 5644364375234507283}
   - component: {fileID: 8634619531219263613}
+  - component: {fileID: 471966435165079998}
   m_Layer: 0
   m_Name: car
   m_TagString: Untagged
@@ -279,7 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  objetivo: {fileID: 0}
 --- !u!65 &5644364375234507283
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -309,6 +309,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &471966435165079998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011545962798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ba979648bf5aa4e8f9c80ab428e59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000011737584068
 GameObject:
   m_ObjectHideFlags: 0

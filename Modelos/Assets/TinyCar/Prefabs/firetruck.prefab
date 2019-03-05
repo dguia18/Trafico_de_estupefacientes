@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8435233193587011802}
   - component: {fileID: 2152996562330282657}
   - component: {fileID: 5206273683533874683}
+  - component: {fileID: 6611944826067002254}
   m_Layer: 0
   m_Name: firetruck
   m_TagString: Untagged
@@ -76,6 +77,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6611944826067002254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010589355896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ba979648bf5aa4e8f9c80ab428e59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000011191381126
 GameObject:
   m_ObjectHideFlags: 0
