@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class carsInstantateSockets : MonoBehaviour
 {
@@ -13,31 +14,30 @@ public class carsInstantateSockets : MonoBehaviour
     }
     void Update()
     {
-       
+
     }
     public void recibirCarro(string name, string emisor)
     {
-        GameObject prefab = Resources.Load(name) as GameObject;
-        Debug.Log(name);
-        if (Time.time > nextInstance)
+        Debug.Log("Nombre del prfats " + name.Split('(')[0]);
+        GameObject prefab = Resources.Load(name.Split('(')[0]) as GameObject;
+        //Debug.Log("Escena Cargada " + SceneManager.GetSceneByName("Glorieta").isLoaded);
+        //GameObject[] gameObjects = SceneManager.GetSceneByName("Glorieta").GetRootGameObjects();
+       
+        //foreach (var item in gameObjects)
+        //{
+        //    Debug.Log(item.name);
+        //}
+        nextInstance = Time.time + instanceRate;
+        Debug.Log("emisor es " + emisor);
+        Debug.Log("nombre del prefact creado" + prefab.name);
+        string receptor = "receptor" + emisor.Substring(6, 4);
+        GameObject generador = GameObject.Find(receptor);
+        if (generador != null)
         {
-            nextInstance = Time.time + instanceRate;
-            if (emisor== "emisor25_1")
-            {
-                GameObject cubo1 = GameObject.Find("receptorGlorieta1");
-                Instantiate(prefab.gameObject, cubo1.transform.position, cubo1.transform.rotation);
-                Debug.Log(cubo1.transform.position.x);
-                Debug.Log(cubo1.transform.position.y);
-                Debug.Log(cubo1.transform.position.z);
-            }
-            if (emisor == "emisor25_2")
-            {
-                GameObject cubo2 = GameObject.Find("receptorGlorieta2");
-                Instantiate(prefab.gameObject, cubo2.transform.position, cubo2.transform.rotation);
-                Debug.Log(cubo2.transform.position.x);
-                Debug.Log(cubo2.transform.position.y);
-                Debug.Log(cubo2.transform.position.z);
-            }
+            Instantiate(prefab.gameObject, generador.transform.position, generador.transform.rotation);
+            Debug.Log(generador.transform.position.x);
+            Debug.Log(generador.transform.position.y);
+            Debug.Log(generador.transform.position.z);
         }
     }
 }
