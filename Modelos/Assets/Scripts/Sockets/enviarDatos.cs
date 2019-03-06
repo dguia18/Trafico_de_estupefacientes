@@ -19,17 +19,13 @@ public class enviarDatos : MonoBehaviour
 
     void OnCollisionEnter(Collision collision) {
         //Debug.Log("Entro a colisionar");
-        if (collision.gameObject.name == "emisor25_1") {
-            //Debug.Log("Entro a colisionar con el cube");
-            PlayerControl.client.Send("Moving|"+ gameObject.name + "|" + collision.gameObject.name);
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.name == "emisor25_2")
+        if (collision.gameObject.name.Length >= 6)
         {
-            //Debug.Log("Entro a colisionar con el cube");
-            PlayerControl.client.Send("Moving|" + gameObject.name + "|" + collision.gameObject.name);
-            Destroy(gameObject);
+            if (collision.gameObject.name.Substring(0,6).Equals("emisor")) {
+                //Debug.Log("Entro a colisionar con el cube");
+                PlayerControl.client.Send("Moving|"+ gameObject.name.Split('(')[0] + "|" + collision.gameObject.name);
+                Destroy(gameObject);
+            }
         }
-     
     }
 }

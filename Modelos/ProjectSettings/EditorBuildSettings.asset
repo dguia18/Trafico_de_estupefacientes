@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Glorieta.unity
     guid: 25a66901bc1f93d4db6c6f3f2e40885e
+  - enabled: 1
+    path: Assets/21_to_18E.unity
+    guid: 6dcb3791cc559004bbcd39543a35ad2a
   m_configObjects: {}

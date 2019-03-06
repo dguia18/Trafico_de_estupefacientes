@@ -3147,7 +3147,7 @@ GameObject:
   - component: {fileID: 435390913}
   - component: {fileID: 435390912}
   m_Layer: 0
-  m_Name: SendDataToGloriet2
+  m_Name: emisor25_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3577,8 +3577,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.6459801, y: -0.0025337087, z: 0.002144699, w: 0.7633471}
-  m_LocalPosition: {x: 245.22406, y: 198.37273, z: 226.81601}
+  m_LocalRotation: {x: -0.005675362, y: -0.9706336, z: 0.23939195, w: -0.023016866}
+  m_LocalPosition: {x: 465.1864, y: 30.945118, z: 325.64795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4547,8 +4547,9 @@ GameObject:
   m_Component:
   - component: {fileID: 677353577}
   - component: {fileID: 677353576}
+  - component: {fileID: 677353578}
   m_Layer: 0
-  m_Name: instanciadorAutos (2)
+  m_Name: receptor25_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4561,7 +4562,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677353575}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 049b07b9c2043474bbf00ce07cac1afa, type: 3}
   m_Name: 
@@ -4591,6 +4592,20 @@ Transform:
   m_Father: {fileID: 629397663}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!114 &677353578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677353575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd8a8d2bdd17eb4bb8f0c4550a41bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instanceRate: 15
+  taxi: {fileID: 0}
 --- !u!1 &678008916
 GameObject:
   m_ObjectHideFlags: 0
@@ -7302,7 +7317,7 @@ GameObject:
   - component: {fileID: 1021367065}
   - component: {fileID: 1021367064}
   m_Layer: 0
-  m_Name: SendDataToGloriet
+  m_Name: emisor25_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8057,8 +8072,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1122887649}
   - component: {fileID: 1122887648}
+  - component: {fileID: 1122887650}
   m_Layer: 0
-  m_Name: instanciadorAutos
+  m_Name: receptor25_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8071,7 +8087,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122887647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 049b07b9c2043474bbf00ce07cac1afa, type: 3}
   m_Name: 
@@ -8101,6 +8117,20 @@ Transform:
   m_Father: {fileID: 704463589}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!114 &1122887650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122887647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd8a8d2bdd17eb4bb8f0c4550a41bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instanceRate: 15
+  taxi: {fileID: 0}
 --- !u!1 &1138847577
 GameObject:
   m_ObjectHideFlags: 0
@@ -9132,6 +9162,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262061971}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1274571934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274571935}
+  - component: {fileID: 1274571936}
+  m_Layer: 0
+  m_Name: PlayerControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1274571935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274571934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1324600361}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1274571936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274571934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b587365ef99db044293185f3e113e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnButton: {fileID: 0}
 --- !u!1 &1284880772
 GameObject:
   m_ObjectHideFlags: 0
@@ -9497,6 +9571,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 3b37530772fbbb441b40078e356e44b3, type: 3}
+--- !u!1 &1324600360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1324600361}
+  m_Layer: 0
+  m_Name: Sockets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1324600361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324600360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 179.37999, y: 0.14999935, z: 177.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1274571935}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1324630059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9991,7 +10096,7 @@ GameObject:
   - component: {fileID: 1371262862}
   - component: {fileID: 1371262861}
   m_Layer: 0
-  m_Name: instanciadorAutos (3)
+  m_Name: receptor25_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10842,7 +10947,7 @@ GameObject:
   - component: {fileID: 1438505392}
   - component: {fileID: 1438505391}
   m_Layer: 0
-  m_Name: instanciadorAutos (4)
+  m_Name: receptor25_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11423,7 +11528,7 @@ GameObject:
   - component: {fileID: 1545130622}
   - component: {fileID: 1545130621}
   m_Layer: 0
-  m_Name: SendDataToCra21_2
+  m_Name: emisor25_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11437,7 +11542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545130619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5699348, y: 0, z: 556.56006}
+  m_LocalPosition: {x: 1.57, y: 0, z: 555.44}
   m_LocalScale: {x: 2.5701315, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 699031714}
@@ -14874,7 +14979,7 @@ GameObject:
   - component: {fileID: 2009814499}
   - component: {fileID: 2009814498}
   m_Layer: 0
-  m_Name: SendDataToCra21
+  m_Name: emisor25_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14888,7 +14993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009814496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.2900429, y: 0, z: 556.55994}
+  m_LocalPosition: {x: -3.29, y: 0, z: 555.53}
   m_LocalScale: {x: 2.5701315, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 699031714}

@@ -29,9 +29,11 @@ public class carsInstantateSockets : MonoBehaviour
         //}
         nextInstance = Time.time + instanceRate;
         Debug.Log("emisor es " + emisor);
-        Debug.Log("nombre del prefact creado" + prefab.name);
+        Debug.Log("nombre del prefact creado" + prefab.gameObject.name);
         string receptor = "receptor" + emisor.Substring(6, 4);
+        print("Receptor : " + receptor);
         GameObject generador = GameObject.Find(receptor);
+        Debug.Log("generador " + generador);
         if (generador != null)
         {
             Instantiate(prefab.gameObject, generador.transform.position, generador.transform.rotation);
