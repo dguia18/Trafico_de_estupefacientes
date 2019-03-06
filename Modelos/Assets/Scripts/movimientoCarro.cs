@@ -12,7 +12,7 @@ public class movimientoCarro : MonoBehaviour
     int ruta;
     void Start()
     {
-        velocidadInicial = 25f;
+        velocidadInicial = 8f;
         velocidad = velocidadInicial;
         ruta = 0;
         desvio = 0;
@@ -30,6 +30,11 @@ public class movimientoCarro : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.gameObject.name == "giro_glorieta_2")
+        {
+            cruzando = false;
+            Cruzar(0f, 90f, 0f);
+        }
         Transform myParent = collision.gameObject.transform.parent;
         if (myParent != null)
         {
@@ -88,6 +93,20 @@ public class movimientoCarro : MonoBehaviour
         } else if (collisioner == "salida")
         {
             Destroy(this);
+        }
+        if (collisioner == "giro_glorieta_1")
+        {
+            int cruce = Random.Range(0, 2);
+            if (cruce == 1)
+            {
+                cruzando = false;
+                Cruzar(0f, 90f, 0f);
+            }
+        }
+        else if (collision.gameObject.name == "giro_esquina")
+        {
+            cruzando = false;
+            Cruzar(0f, -90f, 0f);
         }
         Transform myParent = collision.gameObject.transform.parent;
         if (myParent != null)
