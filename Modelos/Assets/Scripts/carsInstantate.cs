@@ -28,12 +28,12 @@ public class carsInstantate : MonoBehaviour
         {
 
 
-            GameObject auto = (GameObject)Instantiate(autos[Random.Range(0, autos.Length)]);
+            GameObject auto = (GameObject)Instantiate(autos[Random.Range(0, autos.Length)], transform.position, transform.rotation);
             //stone.transform.position = new Vector3(Random.Range(minX, maxX), -30.0f, Random.Range(minZ, maxZ));
             //stone.transform.rotation = Random.rotation;
 
             //nextInstance = Time.time + instanceRate;
-            Instantiate(auto,transform.position,transform.rotation);
+            //Instantiate(auto, transform.position, transform.rotation);
             yield return new WaitForSeconds(Random.Range(minTimeBetweenStones, maxTimeBetweenStones));
 
         }
