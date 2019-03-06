@@ -1230,6 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 708323828}
   - component: {fileID: 708323829}
+  - component: {fileID: 708323830}
   m_Layer: 0
   m_Name: receptor25_4
   m_TagString: Untagged
@@ -1258,7 +1259,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708323827}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 049b07b9c2043474bbf00ce07cac1afa, type: 3}
   m_Name: 
@@ -1274,6 +1275,20 @@ MonoBehaviour:
   instanceRate: 5
   minTimeBetweenStones: 1
   maxTimeBetweenStones: 10
+--- !u!114 &708323830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708323827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd8a8d2bdd17eb4bb8f0c4550a41bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instanceRate: 15
+  taxi: {fileID: 0}
 --- !u!1 &713370273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 78613a3680295b4419a1b2326caf113c,
@@ -3634,7 +3649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1474145446}
-  - component: {fileID: 1474145447}
+  - component: {fileID: 1474145448}
   m_Layer: 0
   m_Name: receptor25_3
   m_TagString: Untagged
@@ -3656,7 +3671,7 @@ Transform:
   m_Father: {fileID: 1647387015}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
---- !u!114 &1474145447
+--- !u!114 &1474145448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3665,20 +3680,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1474145445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 049b07b9c2043474bbf00ce07cac1afa, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd8a8d2bdd17eb4bb8f0c4550a41bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autos:
-  - {fileID: 1000011545962798, guid: e9998600c6a59394c8170891b0cf1f22, type: 3}
-  - {fileID: 1000013763268812, guid: 02171a191edcf2443bb2f9a697e0160a, type: 3}
-  - {fileID: 1000010847750230, guid: 47e33790ee90932409a8029536a21939, type: 3}
-  - {fileID: 1000012898607606, guid: c6fd786275d4cdb4abd8effce60cf681, type: 3}
-  - {fileID: 1000010589355896, guid: c0b62af4e2aa1784997b0d8342bda36e, type: 3}
-  - {fileID: 1000013875554106, guid: 067c6a3954aec2241850a3bbbf3b0773, type: 3}
-  - {fileID: 1000012396246302, guid: 8a9f72a19661807468b91220432d2f25, type: 3}
-  instanceRate: 5
-  minTimeBetweenStones: 1
-  maxTimeBetweenStones: 10
+  instanceRate: 15
+  taxi: {fileID: 0}
 --- !u!1001 &1481127031
 PrefabInstance:
   m_ObjectHideFlags: 0

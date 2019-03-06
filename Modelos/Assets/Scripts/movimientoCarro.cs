@@ -87,12 +87,12 @@ public class movimientoCarro : MonoBehaviour
         string collisioner = collision.gameObject.name;
         if (collisioner.Substring(0, 2).Equals("__"))
         {
+            Destroy(this.gameObject);
             Destroy(collision.gameObject);
-            Destroy(this);
             Debug.Log("Accidentes");
         } else if (collisioner == "salida")
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         if (collisioner == "giro_glorieta_1")
         {
