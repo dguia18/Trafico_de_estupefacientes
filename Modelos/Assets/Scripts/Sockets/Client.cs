@@ -25,7 +25,7 @@ public class Client : MonoBehaviour
     public InputField passwordInputField;
     private List<Unit> unitsOnMap = new List<Unit>();
     private CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-    carsInstantate Car;
+    carsInstantateSockets Car = new carsInstantateSockets();
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -97,43 +97,13 @@ public class Client : MonoBehaviour
                 }
                 
                 break;
-            case "UnitSpawned":
-                GameObject prefab = Resources.Load("Prefabs/Unit1") as GameObject;
-                GameObject go = Instantiate(prefab);
-                float parsedX = float.Parse(aData[3], culture);
-                float parsedY = float.Parse(aData[4], culture);
-                float parsedZ = float.Parse(aData[5], culture);
-                go.GetComponent<NavMeshAgent>().Warp(new Vector3(parsedX, parsedY, parsedZ));
-                Unit un = go.AddComponent<Unit>();
-                unitsOnMap.Add(un);
-                int parsed;
-                Int32.TryParse(aData[2], out parsed);
-                un.unitID = parsed;
 
-                if (aData[1] == clientName)
-                {
-                    un.isPlayersUnit = true;
-                }
-                else
-                {
-                    un.isPlayersUnit = false;
-                }
-                break;
             case "UnitMoved":
-                if (aData[1] == clientName)
-                {
-                    return;
-                }
-           
+                Debug.Log("Llego al Cliente Glorieta");
+                Car.recibirCarro("TinyCar/Prefabs/" + aData[2], aData[3]);
+
                 break;
-            case "Synchronizing":
-                        
-                        //prefab = Resources.Load("TinyCar/Prefabs/"+aData[0]) as GameObject;
-                        //GameObject Carro = Instantiate(prefab);
-                        //go = Instantiate(prefab);
-                        //Car.recibirCarro(go);
-                Debug.Log("instancio a la escena 2");
-                break;
+        
             default:
                 Debug.Log("Unrecognizable command received");
                 break;
